@@ -1,0 +1,18 @@
+.parent{
+  display: flex;
+  /* justify-content: space-between; */
+  gap:50px;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.child{
+  background-color: aqua;
+  height: 4rem;
+  width:8rem;
+  flex-direction: column;
+  
+}
+.child1{
+  flex-basis: 3rem;
+  margin-right: 40px;
+}
