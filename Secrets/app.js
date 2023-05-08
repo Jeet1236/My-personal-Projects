@@ -6,6 +6,9 @@ const ejs = require("ejs");
 const app = express();
 const mongoose = require("mongoose");
 const encrypt = require("mongoose-encryption");
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
+
 mongoose.connect('mongodb://127.0.0.1:27017/userDB');
 
 app.use(express.static("public"));
@@ -19,8 +22,8 @@ const userSchema = new mongoose.Schema({
 });
 
 
-userSchema.plugin(encrypt,
-    { secret: process.env.SECRET, encryptedFields: ["password"] });
+// userSchema.plugin(encrypt,
+//     { secret: process.env.SECRET, encryptedFields: ["password"] });
 const User = new mongoose.model("User", userSchema);
 app.get("/", function (req, res) {
     res.render("home");
@@ -34,19 +37,24 @@ app.get("/register", function (req, res) {
 
 app.post("/register", function (req, res) {
     console.log(req.body.username)
-    const newUser = new User({
-        email: req.body.username,
-        password: req.body.password
+    bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
+        // Store hash in your password DB.
 
-    })
-    newUser.save().then(savedUser => {
-        if (savedUser === newUser) {
-            res.render("secrets");
-        }
-        else {
-            console.log("You are not registered as a user.")
-        }
+        const newUser = new User({
+            email: req.body.username,
+            password: hash
+
+        })
+        newUser.save().then(savedUser => {
+            if (savedUser === newUser) {
+                res.render("secrets");
+            }
+            else {
+                console.log("You are not registered as a user.")
+            }
+        });
     });
+
 })
 
 app.post("/login", function (req, res) {
@@ -54,13 +62,16 @@ app.post("/login", function (req, res) {
     const password = req.body.password;
     User.findOne({ email: username }).then(foundUser => {
         console.log(foundUser)
-        if (foundUser.password === password) {
-            res.render("secrets");
-        }
+        bcrypt.compare(password, foundUser.password).then(function (result) {
+            // result == true
+            if (result === true) {
+                res.render("secrets");
+            }
+            else {
+                console.log("User not registered")
+            }
+        });
 
-        else {
-            console.log("user not registered")
-        }
 
     })
 })
