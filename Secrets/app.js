@@ -102,14 +102,14 @@ app.get("/register", function (req, res) {
 })
 app.get("/secrets", async function (req, res) {
 
-    const users = await User.find({ "secret": { $ne: null } }).exec();
-    console.log(users)
-    if (users) {
-        res.render("secrets", { usersWithSecrets: users })
-    }
-
-
-
+    await User.find({ "secret": { $ne: null } }).exec().then(users => {
+        console.log(users);
+        res.render("secrets", { usersWithSecrets: users });
+    });
+    // console.log(users)
+    // if (users) {
+    //     res.render("secrets", { usersWithSecrets: users })
+    // }
 })
 app.get("/submit", function (req, res) {
     if (req.isAuthenticated()) {
