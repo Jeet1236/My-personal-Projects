@@ -19,5 +19,13 @@ const emojipedia = [
     name: "Rolling On The Floor, Laughing",
     meaning:
       "This is funny! A smiley face, rolling on the floor, laughing. The face is laughing boundlessly. The emoji version of “rofl“. Stands for „rolling on the floor, laughing“."
+  },
+  {
+    id: 4,
+    emoji: "😂",
+    name: "Face with Tears of Joy",
+    meaning: "This emoji represents uncontrollable laughter or extreme joy. It shows a face with tears streaming down its cheeks, conveying a sense of great amusement. It is commonly used to express hilarity, humor, and lightheartedness."
   }
+
 ];
+export default emojipedia;
