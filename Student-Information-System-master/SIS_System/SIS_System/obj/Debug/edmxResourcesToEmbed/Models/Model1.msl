@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SISDBModelStoreContainer" CdmEntityContainer="SISDBEntities">
+    <EntitySetMapping Name="Courses">
+      <EntityTypeMapping TypeName="SISDBModel.Courses">
+        <MappingFragment StoreEntitySet="Courses">
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Departments">
+      <EntityTypeMapping TypeName="SISDBModel.Department">
+        <MappingFragment StoreEntitySet="Department">
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+          <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Instructors">
+      <EntityTypeMapping TypeName="SISDBModel.Instructor">
+        <MappingFragment StoreEntitySet="Instructor">
+          <ScalarProperty Name="InstructorID" ColumnName="InstructorID" />
+          <ScalarProperty Name="InstructorFirstName" ColumnName="InstructorFirstName" />
+          <ScalarProperty Name="InstructorLastName" ColumnName="InstructorLastName" />
+          <ScalarProperty Name="InstructorPhone" ColumnName="InstructorPhone" />
+          <ScalarProperty Name="InstructorHireDate" ColumnName="InstructorHireDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Registrations">
+      <EntityTypeMapping TypeName="SISDBModel.Registration">
+        <MappingFragment StoreEntitySet="Registration">
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+          <ScalarProperty Name="TermID" ColumnName="TermID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="SISDBModel.Student">
+        <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="StudentFirstName" ColumnName="StudentFirstName" />
+          <ScalarProperty Name="StudentLastName" ColumnName="StudentLastName" />
+          <ScalarProperty Name="StudentEnrollmentDate" ColumnName="StudentEnrollmentDate" />
+          <ScalarProperty Name="StudentPhone" ColumnName="StudentPhone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudyTerms">
+      <EntityTypeMapping TypeName="SISDBModel.StudyTerm">
+        <MappingFragment StoreEntitySet="StudyTerm">
+          <ScalarProperty Name="TermID" ColumnName="TermID" />
+          <ScalarProperty Name="TermName" ColumnName="TermName" />
+          <ScalarProperty Name="TermStartDate" ColumnName="TermStartDate" />
+          <ScalarProperty Name="TermEndDate" ColumnName="TermEndDate" />
+          <ScalarProperty Name="TermYear" ColumnName="TermYear" />
+          <ScalarProperty Name="TermSeason" ColumnName="TermSeason" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TeachingAssignments">
+      <EntityTypeMapping TypeName="SISDBModel.TeachingAssignment">
+        <MappingFragment StoreEntitySet="TeachingAssignment">
+          <ScalarProperty Name="InstructorID" ColumnName="InstructorID" />
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+          <ScalarProperty Name="TermID" ColumnName="TermID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
